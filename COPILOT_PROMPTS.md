@@ -22,11 +22,7 @@ Show me the commands to run and initial file structure.
 
 ### Prompt 2: Configure Tailwind
 ```
-Configure Tailwind CSS for a Disney-themed app with these custom colors:
-- disney-blue: #0063B2
-- disney-purple: #6B4E9C
-- disney-yellow: #FFD700
-- disney-red: #E4002B
+Configure Tailwind CSS for a Disney-themed app with blue disney themed colors
 
 Update tailwind.config.js and show me the required content configuration for Vite + React.
 Also create the index.css with Tailwind directives.

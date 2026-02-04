@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can read all food items
+    match /foodItems/{itemId} {
+      allow read: if true;
+      allow write: if false; // Only admins (add later)
+    }
+
+    // Users can read their own profile
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if request.auth.uid == userId;
+    }
+
+    // Users can only create/read their own captures
+    match /userCaptures/{captureId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth.uid == request.resource.data.userId;
+      allow update, delete: if false;
+    }
+
+    // Users can only create/read their own badges
+    match /userBadges/{badgeId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth.uid == request.resource.data.userId;
+      allow update, delete: if false;
+    }
+  }
+}
